@@ -1,0 +1,10 @@
+{
+  "primaryShopId": "replace_primary",
+  "sourceId": null,
+  "sellerId": null,
+  "stores": {
+    "replace_primary": { "sellerId": null, "minisite": "https://replace_primary.en.alibaba.com/" },
+    "replace_new": { "sellerId": null, "minisite": "https://replace_new.en.alibaba.com/" },
+    "replace_old": { "sellerId": null, "minisite": "https://replace_old.en.alibaba.com/" }
+  }
+}

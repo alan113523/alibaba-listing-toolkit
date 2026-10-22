@@ -1,0 +1,8 @@
+{
+  "primaryShopId": "replace_primary",
+  "stores": {
+    "replace_primary": { "id": "replace_primary", "aliId": null, "memberSeq": null, "minisite": "https://replace_primary.en.alibaba.com/", "groupId": null, "groupName": "replace_group" },
+    "replace_new": { "id": "replace_new", "aliId": null, "memberSeq": null, "minisite": "https://replace_new.en.alibaba.com/", "groupId": null, "groupName": "replace_group" },
+    "replace_old": { "id": "replace_old", "aliId": null, "memberSeq": null, "minisite": "https://replace_old.en.alibaba.com/", "groupId": null, "groupName": "replace_group" }
+  }
+}
