@@ -1,0 +1,36 @@
+{
+  "stores": {
+    "demo-a": "synthetic-seller-a",
+    "demo-b": "synthetic-seller-b"
+  },
+  "products": [
+    {
+      "store": "demo-a",
+      "id": 101,
+      "changes": {
+        "attributes": [
+          { "operationType": "EDIT", "attrNameId": 1, "attrName": "Finish", "attrValue": "Matte" }
+        ],
+        "trade": { "saleType": "normal", "moq": 2 },
+        "sample": false
+      }
+    },
+    {
+      "store": "demo-b",
+      "id": 102,
+      "changes": {
+        "trade": {
+          "ladderPrices": [
+            { "operationType": "EDIT", "ladderIndex": 0, "minQuantity": 2, "maxQuantity": 9, "unitPrice": "8.25" },
+            { "operationType": "EDIT", "ladderIndex": 1, "minQuantity": 10, "unitPrice": "7.50" }
+          ]
+        }
+      }
+    },
+    {
+      "store": "demo-b",
+      "id": 103,
+      "changes": { "sample": false }
+    }
+  ]
+}

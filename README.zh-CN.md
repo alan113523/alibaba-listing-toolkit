@@ -1,12 +1,13 @@
 # Alibaba Listing Toolkit
 
-面向已授权 Alibaba.com 卖家会话的草稿和图片银行工具：把店铺身份、素材批准、写入意图和结果回读串在一起。
+面向已授权 Alibaba.com 卖家的商品批量修改、草稿和图片银行工具。每笔写入均绑定店铺身份、写入意图和回读证据。
 
-[English](README.md) · [API说明](docs/api.md) · [流程说明](docs/workflow.md) · [MIT许可证](LICENSE)
+[English](README.md) · [批量修改](docs/bulk-edit.md) · [API说明](docs/api.md) · [流程说明](docs/workflow.md) · [MIT许可证](LICENSE)
 
 ## 能力范围
 
 - 相似品草稿创建、受保护字段继承、图片映射和回读比较。
+- 按店铺批量修改已有商品的类目属性、销售方式、起订量和阶梯价，可单独关闭样品。逐条提交一次，批次结束两小时后核验正式版。
 - 图片银行的素材校验、映射复用、有界批量上传和未知结果对账。
 - 分店身份绑定、写前持久意图、同一运行目录的重复写入拦截。
 - 仅使用 Node 标准库；浏览器连接由有权使用的宿主环境提供。
@@ -27,7 +28,15 @@ npm test
 
 测试在临时目录中生成虚构店铺配置和图片字节，通过内存 fetch/CDP 模拟响应，不读取你的真实配置、不登录平台、不上传或发品。
 
-## 接入真实任务
+## 试跑批量修改
+
+```sh
+npm run bulk-edit -- plan packages/alibaba-bulk-edit/scope.example.json
+```
+
+该命令用合成清单展示将要修改的商品、字段和 SHA-256。批量模块还提供 `apply`、`status` 和 `reconcile`。合成适配器可以在离线环境演示执行，接入真实店铺时由调用方提供绑定店铺身份的授权客户端。运行命令、恢复方式和客户端契约见 [批量修改指南](docs/bulk-edit.md)。
+
+## 为草稿和图片银行接入授权会话
 
 1. 把两个模块的 bindings.example.json 分别复制到模块自己的 `.local/store-bindings.json`。
 2. 填入经过独立核验的本机配置。示例中的空值不可直接使用，缺失或不完整时模块会停止。

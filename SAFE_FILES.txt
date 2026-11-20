@@ -7,9 +7,16 @@ README.zh-CN.md
 SAFE_FILES.txt
 SECURITY.md
 docs/api.md
+docs/bulk-edit.md
 docs/provenance.md
 docs/workflow.md
 package.json
+packages/alibaba-bulk-edit/batch.mjs
+packages/alibaba-bulk-edit/batch.test.mjs
+packages/alibaba-bulk-edit/cli.mjs
+packages/alibaba-bulk-edit/demo-transport.mjs
+packages/alibaba-bulk-edit/plan.mjs
+packages/alibaba-bulk-edit/scope.example.json
 packages/alibaba-draft-interface/bindings.example.json
 packages/alibaba-draft-interface/create-alibaba-draft-from-product.ps1
 packages/alibaba-draft-interface/image-draft.mjs

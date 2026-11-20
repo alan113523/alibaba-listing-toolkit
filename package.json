@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Identity-bound draft and photobank building blocks for authorized Alibaba.com seller workflows",
+  "description": "Identity-bound bulk edits, drafts and photobank tools for authorized Alibaba.com sellers",
   "license": "MIT",
   "engines": { "node": ">=22" },
   "scripts": {
     "test": "node scripts/test.mjs",
-    "check": "node scripts/check.mjs"
+    "check": "node scripts/check.mjs",
+    "bulk-edit": "node packages/alibaba-bulk-edit/cli.mjs"
   }
 }

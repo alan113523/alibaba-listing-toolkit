@@ -4,7 +4,7 @@
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D22-43853d.svg)](package.json)
 
-**Reusable draft and photobank building blocks for authorized Alibaba.com seller workflows.**
+**Bulk edits, draft tools and photobank helpers for authorized Alibaba.com sellers.**
 
 Keep seller identity, approved assets, write intent and readback together. A lost response becomes a reconciliation task; it does not trigger a second write.
 
@@ -14,16 +14,18 @@ Keep seller identity, approved assets, write intent and readback together. A los
 
 - **Identity-bound execution:** compare the current seller with a locally configured expectation before and after operations.
 - **Draft adapters:** create similar-product drafts, preserve protected fields, attach locally verified image mappings and compare readbacks.
+- **Bulk edits:** freeze changes to existing products across stores, submit once per product and verify the changed fields on the official version.
 - **Photobank helpers:** validate source bytes and approval evidence, reuse known mappings, upload bounded batches and reconcile ambiguous outcomes.
 - **Durable intent:** record the intended write before dispatch; retain uncertain outcomes and block blind retries.
 - **Offline tests:** synthetic files, store identities and in-memory fetch/CDP responses. No seller login is needed to run the suite.
-- **No runtime dependencies:** Node.js standard library modules; the caller supplies an authorized browser capability.
+- **No runtime dependencies:** Node.js standard library modules. Supply an authorized browser capability or bulk edit transport for live operations.
 
 ## Scope
 
 | Area | Included |
 | --- | --- |
 | Similar-product draft creation and readback | Executable adapters |
+| Existing product attribute, trade and sample edits | Executable CLI and batch API with a caller-supplied seller transport |
 | Approved image selection and draft image mapping | Executable local helpers |
 | Photobank upload, reuse and reconciliation | Executable adapters |
 | Multi-store isolation and bounded batches | Explicitly configured helpers |
@@ -45,9 +47,17 @@ npm test
 
 `npm test` creates an isolated temporary workspace with synthetic configuration. It neither reads your local seller configuration nor opens a browser. Temporary data is removed when the run finishes.
 
-## Use with an authorized seller session
+Preview an offline bulk edit using the synthetic scope.
 
-1. Copy each package's `bindings.example.json` to that package's `.local/store-bindings.json`, creating `.local/` as needed.
+```sh
+npm run bulk-edit -- plan packages/alibaba-bulk-edit/scope.example.json
+```
+
+The [bulk edit guide](docs/bulk-edit.md) covers the offline demo, approval digest, live transport contract and recovery commands.
+
+## Use draft and photobank adapters with an authorized seller session
+
+1. Copy the draft and photobank packages' `bindings.example.json` files to their respective `.local/store-bindings.json` paths.
 2. Fill the local bindings with seller values you have independently verified. The examples contain empty placeholders and intentionally fail validation.
 3. Supply a documented in-process CDP-compatible handle from your authorized host. The required interface is described in [the API guide](docs/api.md).
 4. Start with local asset validation or read-only reconciliation. Create a draft or upload only within an explicitly authorized task.
@@ -94,6 +104,7 @@ An accepted HTTP response, a saved draft and a displayed listing are separate st
 
 ```text
 packages/
+  alibaba-bulk-edit/        Existing product patch planning, submission and reconciliation
   alibaba-draft-interface/  Draft adapters, comparison and config validation
   alibaba-photobank/        Image validation, upload/reuse and local mappings
 docs/                      API, workflow and release provenance
